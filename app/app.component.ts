@@ -17,6 +17,7 @@ import {HeroService} from './hero.service';
     	<my-hero-detail [hero]="selectedHero"></my-hero-detail>
     	`,
     directives: [HeroDetailComponent],
+    providers: [HeroService],
     styles: [`
 	  .selected {
 	    background-color: #CFD8DC !important;
@@ -69,7 +70,11 @@ import {HeroService} from './hero.service';
 })
 export class AppComponent {
 	title = 'Tour of Heroes';
-	heroes = ; //TODO
+
+	constructor(private _heroService: HeroService) { }
+
+	heroes = this._heroService.getHeroes();
+
 	selectedHero: Hero;
 	onSelect(hero: Hero) { this.selectedHero = hero; }
 }
