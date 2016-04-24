@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {Hero} from './hero';
-
+import {HeroDetailComponent} from './hero-detail.component';
 
 @Component({
     selector: 'my-app',
@@ -12,7 +12,10 @@ import {Hero} from './hero';
     			<span class="badge">{{hero.id}}</span> {{hero.name}}
     		</li>
     	</ul>
+
+    	<my-hero-detail [hero]="selectedHero"></my-hero-detail>
     	`,
+    directives: [HeroDetailComponent],
     styles: [`
 	  .selected {
 	    background-color: #CFD8DC !important;
