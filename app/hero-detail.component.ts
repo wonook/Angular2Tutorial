@@ -14,13 +14,17 @@ export class HeroDetailComponent implements OnInit {
 
     constructor(
         private _heroService: HeroService,
-        private _routeParams: RouteParams,
+        private _routeParams: RouteParams
         ) { }
 
+    errorMessage;
     ngOnInit() {
         let id = +this._routeParams.get('id'); // + is to convert string to number
         this._heroService.getHero(id)
-            .then(hero => this.hero = hero);
+            .subscribe(
+                hero => this.hero = hero,
+                error => this.errorMessage = error
+                );
     }
 
     goBack() {
