@@ -20,3 +20,8 @@
 *.iml
 .idea/*
 
+# files from npm
+node_modules/*
+
+# generated assets files from gulp
+public/assets/*
