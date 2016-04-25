@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <base href="/">
   <title>AngularOnRails</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+
+  <script src="assets/libs/es6-shim.min.js"></script>
+  <script src="assets/libs/system-polyfills.js"></script>
+  <script src="assets/libs/shims_for_IE.js"></script>
+
+  <script src="assets/libs/angular2-polyfills.js"></script>
+  <script src="assets/libs/system.src.js"></script>
+  <script src="assets/libs/Rx.js"></script>
+  <script src="assets/libs/angular2.dev.js"></script>
+  <script src="assets/libs/router.dev.js"></script>
+  <script src="assets/libs/http.dev.js"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      },
+      map: {
+        app: 'assets/app'
+      },
+    });
+    System.import('app/main')
+        .then(null, console.error.bind(console));
+  </script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <my-app>Loading...</my-app>
 
 </body>
 </html>

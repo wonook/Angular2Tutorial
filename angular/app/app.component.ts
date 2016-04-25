@@ -28,18 +28,18 @@ import {HeroDetailComponent} from './hero-detail.component'
 })
 @RouteConfig([
     {
-        path: '/dashboard',
+        path: 'app/dashboard',
         name: 'Dashboard',
         component: DashboardComponent,
         useAsDefault: true,
     },
     {
-        path: '/heroes',
+        path: 'app/heroes',
         name: 'Heroes',
         component: HeroesComponent,
     },
     {
-        path: '/detail/:id',
+        path: 'app/detail/:id',
         name: 'HeroDetail',
         component: HeroDetailComponent,
     },

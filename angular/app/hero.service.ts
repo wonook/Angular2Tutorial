@@ -10,8 +10,8 @@ export class HeroService {
         private http: Http
         ) {}
 
-    private _heroesUrl = 'app/data/heroes.json';
-    private _heroUrl = 'app/data/heroes/';
+    private _heroesUrl = 'heros.json';
+    private _heroUrl = 'heros/';
 
     getHeroes(): Observable<Hero[]> {
         return this.http.get(this._heroesUrl)

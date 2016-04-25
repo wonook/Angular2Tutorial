@@ -10,8 +10,9 @@ uglify = require('gulp-uglify'),
 typescript = require('gulp-typescript'),
 tscConfig = require('./angular/tsconfig.json');
 
-gulp.task('default', ['watch', 'images', 'sass', 'javascript']);
+gulp.task('default', ['watch', 'compile']);
 
+gulp.task('compile', ['images', 'sass', 'javascript']);
 
 gulp.task('clean', function(cb) {
     return del(["./public/assets/*"], cb);
@@ -59,7 +60,14 @@ gulp.task('js', ['clean'], function() {
 
 gulp.task('compileTS', ['clean'], function() {
     var srcPath = "./angular/app/**/*.ts",
-        destPath = "./public/assets/app";
+        destPath = "./public/assets/app",
+        htmlsrcPath = "./angular/app/**/*.html",
+        cssSrcPath = "./angular/app/**/*.css";
+
+    gulp.src(htmlsrcPath)
+      .pipe(gulp.dest(destPath));
+    gulp.src(cssSrcPath)
+      .pipe(gulp.dest(destPath));
 
     return gulp.src(srcPath)
       .pipe(sourcemaps.init())
@@ -86,8 +94,9 @@ gulp.task('copy:libs', ['clean'], function() {
 
 
 gulp.task('watch', function() {
-    gulp.watch("./app/assets/stylesheets/**/*", ['sass']);
-    gulp.watch("./app/assets/javascripts/**/*", ['js']);
-    gulp.watch("./app/assets/images/*", ['images']);
+    gulp.watch("./app/assets/stylesheets/**/*", ['compile']);
+    gulp.watch("./app/assets/javascripts/**/*", ['compile']);
+    gulp.watch("./app/assets/images/*", ['compile']);
+    gulp.watch("./angular/app/**/*", ['compile']);
 });
 
