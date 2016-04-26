@@ -2,13 +2,12 @@ import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router'
 
 import {Hero} from './hero';
-import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
 
 @Component({
     selector: 'my-heroes',
-    templateUrl: 'assets/app/heroes.component.html',
-    styleUrls: ['assets/app/heroes.component.css'],
+    templateUrl: 'assets/app/heroes/heroes.component.html',
+    styleUrls: ['assets/app/heroes/heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
     title = 'Tour of Heroes';
